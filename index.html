@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kỷ niệm 1 năm - Tiến & Hường</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(180deg, #ffffff 0%, #fef9f9 100%);
+      color: #555;
+      text-align: center;
+      overflow-x: hidden;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-top: 50px;
+      color: #e85a78;
+      animation: fadeIn 2s ease;
+    }
+
+    .message {
+      max-width: 750px;
+      margin: 30px auto;
+      line-height: 1.9;
+      white-space: pre-line;
+      font-size: 1.05em;
+      background: rgba(255,255,255,0.7);
+      padding: 20px 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      backdrop-filter: blur(6px);
+      animation: fadeIn 2.5s ease;
+    }
+
+    .album {
+      margin: 50px auto 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      animation: fadeIn 3s ease;
+    }
+
+    .photo-frame {
+      width: 180px;
+      height: 180px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border: 2px solid #f4dce0;
+      overflow: hidden;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      position: relative;
+    }
+
+    .photo-frame:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 25px rgba(232,90,120,0.2);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    footer {
+      margin-bottom: 40px;
+      color: #999;
+      font-size: 0.9em;
+      animation: fadeIn 3.5s ease;
+    }
+
+    .heart {
+      position: fixed;
+      color: #ff8fab;
+      font-size: 18px;
+      animation: float 8s linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% { opacity: 1; }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>💑 Tiến & Hường 💖</h1>
+
+  <div class="message">
+    “Từ ngày 18 tháng 9 — ngày đầu tiên anh và em quen nhau,
+    đến ngày 22 tháng 11 — ngày em đồng ý làm người yêu anh,
+    mọi thứ như một hành trình đẹp nhất mà anh từng có.
+
+    Một năm trôi qua, chúng mình đã cùng nhau đi qua nhiều điều — vui có, buồn có, nhưng trên hết là yêu thương.
+
+    Cảm ơn em, Hường, vì đã ở bên anh, vì đã chọn anh giữa hàng vạn người ngoài kia.
+
+    Anh không biết tương lai sẽ ra sao, chỉ mong những tháng năm sau này,
+    anh vẫn được cùng em nắm tay đi qua từng mùa như thế.”
+
+    – Tiến ❤️ 22/11/2025 –
+  </div>
+
+  <div id="album" class="album"></div>
+
+  <footer>🌸 Kỷ niệm 1 năm yêu nhau – 22/11/2025 🌸</footer>
+
+  <audio id="bgm" loop autoplay>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c9e7b6f6b7.mp3?filename=relaxing-piano-lofi-110624.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bgm");
+    document.addEventListener("click", () => {
+      audio.play().catch(() => {});
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 6 + Math.random() * 5 + "s";
+      heart.style.fontSize = 14 + Math.random() * 20 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 600);
+
+    // Tự động hiển thị ảnh từ thư mục /images/
+    const imageFolder = 'images/';
+    const imageCount = 20;
+    const albumDiv = document.getElementById('album');
+
+    for (let i = 1; i <= imageCount; i++) {
+      const img = new Image();
+      img.src = `${imageFolder}anh${i}.jpg`;
+      img.onload = function() {
+        const frame = document.createElement('div');
+        frame.className = 'photo-frame';
+        frame.appendChild(img);
+        albumDiv.appendChild(frame);
+      };
+    }
+  </script>
+</body>
+</html>
