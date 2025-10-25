@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kỷ niệm tình yêu - Tiến & Hường</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #fff;
+      color: #444;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-top: 40px;
+      color: #e91e63;
+    }
+    .clock, .days {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+    .message {
+      max-width: 700px;
+      margin: 40px auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px 0;
+    }
+    .gallery img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    audio {
+      display: none;
+    }
+    footer {
+      margin: 30px 0;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Tiến & Hường 💖</h1>
+  <div class="clock" id="clock"></div>
+  <div class="days" id="daysTogether"></div>
+
+  <div class="message">
+    “Từ ngày 18 tháng 9 — ngày đầu tiên anh và em quen nhau,
+    đến ngày 22 tháng 11 — ngày em đồng ý làm người yêu anh,
+    mọi thứ như một hành trình đẹp nhất mà anh từng có.
+
+    Một năm trôi qua, chúng mình đã cùng nhau đi qua nhiều điều — vui có, buồn có, nhưng trên hết là yêu thương.
+
+    Cảm ơn em, Hường, vì đã ở bên anh, vì đã chọn anh giữa hàng vạn người ngoài kia.
+
+    Anh không biết tương lai sẽ ra sao, chỉ mong những tháng năm sau này,
+    anh vẫn được cùng em nắm tay đi qua từng mùa như thế.”
+
+    – Tiến ❤️ 22/11/2025 –
+  </div>
+
+  <div class="gallery" id="gallery"></div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c9e7b6f6b7.mp3?filename=relaxing-piano-lofi-110624.mp3" type="audio/mpeg">
+  </audio>
+
+  <footer>© 2025 Tiến & Hường – Một năm yêu thương 💕</footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `Bây giờ là ${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const startDate = new Date('2024-11-22');
+    function updateDays() {
+      const today = new Date();
+      const diffTime = Math.abs(today - startDate);
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('daysTogether').textContent = `Chúng mình đã yêu nhau được ${diffDays} ngày 💕`;
+    }
+    updateDays();
+    setInterval(updateDays, 1000 * 60 * 60);
+
+    const gallery = document.getElementById('gallery');
+    const imageCount = 20;
+    for (let i = 1; i <= imageCount; i++) {
+      const img = document.createElement('img');
+      img.src = `images/anh${i}.jpg`;
+      img.alt = `Kỷ niệm ${i}`;
+      img.onerror = () => img.style.display = 'none';
+      gallery.appendChild(img);
+    }
+  </script>
+</body>
+</html>
